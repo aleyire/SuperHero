@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0
+}
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.863) , rgba(255, 255, 255, 0.836)) , url('../img/img-fondo.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 1800px;
+    background-attachment: fixed;
+    background-size: cover;
+}
+h1{
+    font-family: 'signika', sans-serif;
+    font-weight: 800;
+    color: #500c0c;
+}
+label {
+    font-family: 'signika', sans-serif;
+    text-align: center;
+    font-weight: 800;
+    color: #500c0c;
+}
+.btn {
+    font-family: 'signika', sans-serif;
+    font-weight: 500;
+    background-color: rgba(15, 15, 15, 0.753);
+    color: rgb(255, 255, 255);
+}
+.card-body {
+    font-family: 'signika', sans-serif;
+    font-weight: 500;
+    color: #500c0c;
+}
+.container {
+    background:  rgba(204, 189, 189, 0.5);
+    text-align: center;
+}
