@@ -13,25 +13,23 @@ formulario.addEventListener('submit', (event) => {
       alert('Solo se permiten números');
       return
    }
-});
+   // Agregar el enlace de Superheroapi
+   fetch(`https://www.superheroapi.com/api.php/4905856019427443/` + inputValor).then((respuesta) => {
+      respuesta.json().then((data) => {
+         console.log(data);
+         const nombre = data.name;
+         const imagen = data.image.url
+         const conecctions = data.connections['group-affiliation'];
+         const publisher = data.biography.publisher
+         const occupation = data.work.occupation
+         const primeraAparicion = data.biography['first-appearance'];
+         const altura = data.appearance.height
+         const peso = data.appearance.weight
+         const aliases = data.biography.aliases
+         const powers = data.powerstats
 
-// Agregar el enlace de Superheroapi
-fetch(`https://www.superheroapi.com/api.php/4905856019427443/${inputValor}`).then((respuesta) => {
-   respuesta.json().then((data) => {
-      console.log(data);
-      const nombre = data.name;
-      const imagen = data.image.url
-      const conecctions = data.connections['group-affiliation'];
-      const publisher = data.biography.publisher
-      const occupation = data.work.occupation
-      const primeraAparicion = data.biography['first-appearance'];
-      const altura = data.appearance.height
-      const peso = data.appearance.weight
-      const aliases = data.biography.aliases
-      const powers = data.powerstats
-
-      // Imprimir tabla con atributos de los superhéroes
-      heroInfo.innerHTML = `
+         // Imprimir tabla con atributos de los superhéroes
+         heroInfo.innerHTML = `
          <div class="card mb-3"">
             <div class="row g-0">
                <div class="col-md-4">
@@ -52,38 +50,39 @@ fetch(`https://www.superheroapi.com/api.php/4905856019427443/${inputValor}`).the
                </div>
             </div>`
 
-      // Gráficos de CanvasJs
-      const config =  {
-         theme: "light2", // "light1", "light2", "dark1", "dark2"
-         exportEnabled: true,
-         animationEnabled: true,
-         title: {
-            text: `Estadísticas de ${nombre}`
-         },
-         data: [{
-            type: "pie",
-            startAngle: 25,
-            toolTipContent: "<b>{label}</b>: {y}%",
-            showInLegend: "true",
-            legendText: "{label}",
-            indexLabelFontSize: 16,
-            indexLabel: "{label} - {y}%",
-            dataPoints: [
-               { y: powers.intelligence, label: "Intelligence" },
-               { y: powers.strength, label: "Strength" },
-               { y: powers.speed, label: "Speed" },
-               { y: powers.durability, label: "Durability" },
-               { y: powers.power, label: "Power" },
-               { y: powers.combat, label: "Combat" }
-            ]
-         }]
-      };
-      if (powers.intelligence !== "null") {
-         const chart = new CanvasJS.Chart('hero-stats', config);
-         chart.render();
-     } else {
-         alert("No existe");
-         heroStats.innerHTML = " "
-     }
-     });
- });
+         // Gráficos de CanvasJs
+         const config = {
+            theme: "light2", // "light1", "light2", "dark1", "dark2"
+            exportEnabled: true,
+            animationEnabled: true,
+            title: {
+               text: `Estadísticas de ${nombre}`
+            },
+            data: [{
+               type: "pie",
+               startAngle: 25,
+               toolTipContent: "<b>{label}</b>: {y}%",
+               showInLegend: "true",
+               legendText: "{label}",
+               indexLabelFontSize: 16,
+               indexLabel: "{label} - {y}%",
+               dataPoints: [
+                  { y: powers.intelligence, label: "Intelligence" },
+                  { y: powers.strength, label: "Strength" },
+                  { y: powers.speed, label: "Speed" },
+                  { y: powers.durability, label: "Durability" },
+                  { y: powers.power, label: "Power" },
+                  { y: powers.combat, label: "Combat" }
+               ]
+            }]
+         };
+         if (powers.intelligence !== "null") {
+            const chart = new CanvasJS.Chart('hero-stats', config);
+            chart.render();
+         } else {
+            alert("No existe");
+            heroStats.innerHTML = " "
+         }
+      });
+   });
+});
