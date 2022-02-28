@@ -1,4 +1,4 @@
-#🦸‍♂️ SuperHero :tw-1f60d:
+#🦸‍♂️ SuperHero 
 
 El proyecto *SuperHero* está orientado a la búsqueda de superhéroes o villanos de los comics en general, para ello, se utiliza una interfaz de programación de aplicaciones (API) llamada “superheroapi” y su dirección web es https://www.superheroapi.com/api.php/.
 
